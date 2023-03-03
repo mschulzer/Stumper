@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<style>
+body {
+   margin-top: 100px;
+   margin-left: 100px;
+}
+.avail-block {
+   margin: 2px;
+   display: inline-block;
+}
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+
+  var children = ev.target.childNodes;
+  var text = ""
+  var sqlStr = ""
+
+  for (i = 0; i < children.length; i++) {
+    text = document.getElementById(children[i].id).innerHTML;
+    sqlStr += text + ' '
+  }
+
+  document.getElementById("showSql").innerHTML = sqlStr
+}
+</script>
+
+</head>
+<body>
+
+<div id="dst" style="width: 200px; height: 200px; border: 1px dotted black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="tlb" style="width: 200px; height: 40px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)">
+   <div class="avail-block" id="src1" style="width: 20px; height: 20px; background-color: blue;" draggable="true" ondragstart="drag(event)">A</div>
+   <div class="avail-block" id="src2" style="width: 20px; height: 20px; background-color: green;" draggable="true" ondragstart="drag(event)">B</div>
+   <div class="avail-block" id="src3" style="width: 20px; height: 20px; background-color: yellow;" draggable="true" ondragstart="drag(event)">C</div>
+   <div class="avail-block" id="src4" style="width: 20px; height: 20px; background-color: orange;" draggable="true" ondragstart="drag(event)">D</div>
+</div>
+<div id="showSql" style="width: 200px; height: 40px; border: 1px solid #cccccc;"></div>
+
+</body>
+</html>
