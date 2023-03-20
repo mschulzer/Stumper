@@ -4,7 +4,7 @@ import long_responses as long
 
 """
 
-    Our currently defined functions:                                                                STRUCTURES USED:
+    CURRENTLY DEFINED FUNCTIONS:                                                                    STRUCTURES USED:
     ------------------------------------                                                            -------------------------------
         - message_probability(msg, rec_words, sg_resp, req_words):                                  FUNCTION
             - set certainty = 0                                                                     VARIABLE
@@ -24,9 +24,9 @@ import long_responses as long
             - parse the words using regular expression: split when hitting [,;?!.-]                 VARIABLE
             - run the result through check_all_messages() --> fetches most likely response
 
-    Main:
+    MAIN PROGRAM:
     ------------------------------------
-        - run forever while = True: ...                                                             LOOP
+        - run forever: while = True: ...                                                            LOOP
 
 """
 
