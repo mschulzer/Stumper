@@ -6,23 +6,23 @@ import long_responses as long
 
     Our currently defined functions:                                                                STRUCTURES USED:
     ------------------------------------                                                            -------------------------------
-        - message_probability(msg, rec_words, sg_resp, req_words):                                  DEFINE FUNCTION
-            - set certainty = 0                                                                     DECLARE VARIABLE
-            - loop through and count number of words - increment certainty                          LOOP, ARITHMETIC OP
-            - calculate percentage of recognized words: certainty / number of recognized words      ARITHMETIC OP
+        - message_probability(msg, rec_words, sg_resp, req_words):                                  FUNCTION
+            - set certainty = 0                                                                     VARIABLE
+            - loop through and count number of words - increment certainty                          LOOP, ARITHMETIC OPERATION
+            - calculate percentage of recognized words: certainty / number of recognized words      ARITHMETIC OPERATION
             - run through required words - check if certain words are there                         LOOP, IF-CONDITIONAL
             - must either return required words or single response                                  IF-CONDITIONAL
 
-        - check_all_messages(msg):                                                                  DEFINE FUNCTION
-            - declare empty dictionary                                                              DECLARE DICTIONARY
-            - define a new function: response(resp, list, single, req) --> highest_prob_list{}      DEFINE                          
-            - populate with a few responses at the outset                                           USE FUNCTION
-            - best_match = max(highest_prob_list, key=highest_prob_list.get): return highest prob   SET VARIABLE
+        - check_all_messages(msg):                                                                  FUNCTION
+            - declare empty dictionary                                                              DICTIONARY
+            - define a new function: response(resp, list, single, req) --> highest_prob_list{}      FUNCTION                          
+            - populate with a few responses at the outset                                           
+            - best_match = max(highest_prob_list, key=highest_prob_list.get): return highest prob   VARIABLE
 
-        - get_response(usr_input):                                                                  DEFINE FUNCTION
-            - lower all words in user input                                                         MANIPULATE VARIABLE
-            - parse the words using regular expression: split when hitting [,;?!.-]                 MANIPULATE VARIABLE
-            - run the result through check_all_messages() --> fetches most likely response          RETURN MOST LIKELY RESPONSE
+        - get_response(usr_input):                                                                  FUNCTION
+            - lower all words in user input                                                         VARIABLE
+            - parse the words using regular expression: split when hitting [,;?!.-]                 VARIABLE
+            - run the result through check_all_messages() --> fetches most likely response
 
     Main:
     ------------------------------------
