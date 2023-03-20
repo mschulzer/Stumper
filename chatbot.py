@@ -15,7 +15,7 @@ import long_responses as long
 
         - check_all_messages( ... ):                                                                FUNCTION
             - declare empty dictionary                                                              DICTIONARY
-            - define a new function: response( ... ) --> highest_prob_list{}      FUNCTION                          
+            - define a new function: response( ... ) --> highest_prob_list{}                        FUNCTION                          
             - populate with a few responses at the outset                                           
             - best_match = max(highest_prob_list, key=highest_prob_list.get): return highest prob   VARIABLE
 
