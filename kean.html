@@ -1,0 +1,64 @@
+
+<div class="chartBox" style="margin-top: 10px;">
+        <canvas id="myChart"></canvas>
+      </div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+    // setup 
+    const down = (ctz, value) => ctz.p0.parsed.y < ctz.p1.parsed.y ? value: undefined;
+    const data = {
+      labels: ['2-6-2022', '3-6-2022', '4-6-2022', '5-6-2022', '6-6-2022', '7-6-2022', '8-6-2022'],
+      datasets: [{
+        label: 'Udvikling i % for BTC (seneste 7 dage)',
+        //data: [210509.06, 205870.25, 207082.17, 207353.73, 218137.58, 216583.47, 211769.05],
+	data: [0.00, -10.58, -12.80, -12.30, -12.13, -7.87, -10.35],
+        backgroundColor: 'rgba(255, 26, 104, 0.2)',
+        segment: {
+          //borderColor: ctz => down(ctz, 'rgba(255, 26, 104, 1)') || 'rgba(75, 192, 192, 1)',
+          borderDash: ctz => down(ctz, [3, 5])
+        },
+	      //tension: 0.4
+      }]
+    };
+
+    // config 
+    const config = {
+      type: 'line',
+      data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          },
+          x: {
+                ticks: {
+                    maxRotation: 45,
+                    minRotation: 45
+                }
+            }
+        }
+      }
+    };
+
+    // render init block
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+    const new_dates = ['9-6-2022', '10-6-2022', '11-6-2022']
+    const new_values = [-6.98, -11.58, -4.32]
+    const elm = document.getElementById('add_data');
+    const rst = document.getElementById('rst');
+
+    elm.addEventListener("click", function() {
+      console.log(myChart.data.datasets[0].data)
+      for (let i = 0; i < new_dates.length; i++) {
+        myChart.data.labels.push(new_dates[i])
+        myChart.data.datasets[0].data.push(new_values[i])
+      }
+      
+      myChart.update();
+    });
