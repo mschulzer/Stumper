@@ -1,0 +1,51 @@
+
+{% load static %}
+
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="{% static 'logik.js' %}"></script>
+<link rel="stylesheet" href="{% static 'layout.css' %}">
+
+<style>
+    ul {
+        line-height: 1.5em;
+    }
+</style>
+
+<ul>
+{% for klub in klubber %}
+    <li><b>{{ klub.name }}</b>: {{ klub.addr }}</li>
+        <ul>
+            {% for bord in borde %}
+                <li>{{ bord.title }}: {{ bord.price }} kr @ {{ bord.club }}</li>
+            {% endfor %}
+        </ul>
+{% endfor %}
+</ul>
+
+
+<div class="plan">
+    <div class="room">
+       <p style="font-size: 14px;">1. sal + floor</p>
+    </div>
+    <div class="room">
+        <p class="roomName">Bord #1</p>
+        <div class="simple-bulb"></div>
+    </div>
+    <div class="room">
+        <p class="roomName">Bord #2</p>
+        <div class="simple-bulb"></div>
+    </div>
+    <div class="room">
+        <p class="roomName">Bord #3</p>
+    </div>
+    <div class="room">
+        <p class="roomName">Bord #4</p>
+    </div>
+    <div class="room">
+        <p style="font-size: 14px;"><b>FLOOR</b></p>
+    </div>
+</div>
+
+{% endblock %}
